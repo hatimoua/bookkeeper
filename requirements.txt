@@ -1,0 +1,11 @@
+tavily
+langgraph
+pydantic
+openai
+python-dotenv  # <-- We'll use this to load your API keys locally
+sqlalchemy
+pytest
+fastapi
+uvicorn
+requests
+python-multipart
