@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Dict, Optional
+from enum import Enum
 
 
 """# ==========================================
@@ -39,7 +39,14 @@ class Invoice(BaseModel):
     total_amount: float 
     currency: str 
     tax: float 
-    lines: List[InvoiceLine]
+    lines: list[InvoiceLine]
+
+class Confidence(str, Enum):
+    LOW = "low"
+    MEDIUM = "medium"
+    HIGH = "high"
+
+
 
 
 

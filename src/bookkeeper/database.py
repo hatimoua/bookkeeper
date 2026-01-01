@@ -1,9 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 from orm_models import Base, AccountModel, AccountEmbedding
-from models import Account
+from bookkeeper.models import Account
 from config import settings
-from typing import Optional
 
 # 1. Setup the Engine (The Connection)
 # check_same_thread=False is needed only for SQLite if multiple parts of the app 

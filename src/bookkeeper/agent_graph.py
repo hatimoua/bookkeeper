@@ -1,16 +1,15 @@
 from pydantic import BaseModel
-from typing import List, Optional
-from models import AccountSuggestion
-from query import suggest_accounts, grade_confidence, format_suggestions_for_user, format_needs_review
+from bookkeeper.models import AccountSuggestion, Confidence
+from bookkeeper.query import suggest_accounts, grade_confidence, format_suggestions_for_user, format_needs_review
 from langgraph.graph import StateGraph, END
 from config import settings
 
 
 class GraphState(BaseModel):
-    description : str
-    suggestions : Optional[List[AccountSuggestion]] = None
-    confidence : Optional[str] = None # 'low' | 'medium' | 'high'
-    final_answer : Optional[str] = None
+    description: str
+    suggestions: list[AccountSuggestion] | None = None
+    confidence: Confidence | None = None
+    final_answer: str | None = None
     
 
 def run_retriever(state: GraphState) -> dict:
@@ -22,7 +21,7 @@ def run_confidence(state: GraphState) -> dict:
     return {"confidence": confidence}
 
 def route_based_on_confidence(state: GraphState) -> str: 
-    if state.confidence == "high":
+    if state.confidence == Confidence.HIGH:
         return "finalize"
     else: 
         return "needs_review"

@@ -1,7 +1,7 @@
 import csv
-from models import Account
-from database import init_db, insert_account, clear_database, insert_account_embedding, load_all_account_embeddings, get_all_accounts, get_account_by_code
-from query import get_account_text, embed_text
+from bookkeeper.models import Account
+from bookkeeper.database import init_db, insert_account, clear_database, insert_account_embedding, load_all_account_embeddings, get_all_accounts, get_account_by_code
+from bookkeeper.query import get_account_text, embed_text
 
 
 def import_coa_from_csv(csv_path: str):

@@ -1,6 +1,6 @@
 from typing import List
-from models import InvoiceLine, Invoice
-from query import suggest_accounts, grade_confidence
+from bookkeeper.models import InvoiceLine, Invoice
+from bookkeeper.query import suggest_accounts, grade_confidence
 
 def invoice_to_description(invoice: Invoice) -> str:
     """ Turn a structured Invoice into a single text description 

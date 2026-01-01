@@ -1,9 +1,8 @@
 import math 
 from typing import List, Tuple, Dict 
-from models import Account, AccountSuggestion 
-from database import get_account_by_code, load_all_account_embeddings
+from bookkeeper.models import Account, AccountSuggestion, Confidence
+from bookkeeper.database import get_account_by_code, load_all_account_embeddings
 from openai import OpenAI
-from dotenv import load_dotenv
 from config import settings
 
 client = OpenAI(api_key=settings.OPENAI_API_KEY)    
@@ -229,17 +228,21 @@ def format_needs_review(
     
 
 def grade_confidence(
-    suggestions: List[AccountSuggestion]
-    ) -> str :
+    suggestions: list[AccountSuggestion]
+    ) -> Confidence:
+    
+    # Safety check: Always handle empty lists to prevent IndexErrors!
+    if not suggestions:
+        return Confidence.LOW
     
     top_norm = suggestions[0].normalized_similarity
     
     if top_norm < 0.65:
-        return "low"
+        return Confidence.LOW
     elif top_norm < 0.85:
-        return "medium"
+        return Confidence.MEDIUM
     else:
-        return "high"
+        return Confidence.HIGH
 
 
 

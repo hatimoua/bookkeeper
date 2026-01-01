@@ -2,9 +2,9 @@ import os
 import json
 import requests
 from config import settings
-from models import Invoice
-from invoices import invoice_to_description
-from agent_graph import create_graph
+from bookkeeper.models import Invoice
+from bookkeeper.invoices import invoice_to_description
+from bookkeeper.agent_graph import create_graph
 
 
 class LandingAIClient:

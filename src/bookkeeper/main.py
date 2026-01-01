@@ -1,6 +1,6 @@
-from invoices import invoice_to_description
-from models import Invoice, InvoiceLine
-from query import suggest_accounts, format_suggestions_for_user, grade_confidence
+from bookkeeper.invoices import invoice_to_description
+from bookkeeper.models import Invoice, InvoiceLine
+from bookkeeper.query import suggest_accounts, format_suggestions_for_user, grade_confidence
 
 
 if __name__ == "__main__":
