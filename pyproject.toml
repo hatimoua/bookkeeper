@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bookkeeper"]
+
+[project]
+name = "bookkeeping"
+version = "0.1.0"
+description = "AI-powered bookkeeping automation tool that suggests appropriate accounting codes for invoices using semantic similarity and OpenAI embeddings"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.128.0",
+    "langgraph>=1.0.5",
+    "openai>=2.14.0",
+    "pydantic>=2.12.5",
+    "pytest>=9.0.2",
+    "python-dotenv>=1.2.1",
+    "python-multipart>=0.0.21",
+    "requests>=2.32.5",
+    "sqlalchemy>=2.0.45",
+    "tavily>=1.1.0",
+    "uvicorn>=0.40.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/hatimoua/bookkeeping"
+Repository = "https://github.com/hatimoua/bookkeeping"
+Issues = "https://github.com/hatimoua/bookkeeping/issues"
